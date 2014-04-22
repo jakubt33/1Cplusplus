@@ -6,15 +6,27 @@
 #include <string>
 
 using namespace std;
-
+template <class T>
 class Macierz
 {
 private:
-    double **tablica;
+    T **tablica;
     int m, n;
 public:
-    void macierz_losowa();
-    friend ostream &operator<< (ostream &str, const Macierz &a);
+    void wypelnijLosowo();
+    void wypelnijZerami();
+    void wypelnijJedynkami();
+    friend ostream &operator<< (ostream &str, const Macierz<T> &a) {
+    for(int x=0; x<a.m;x++)
+        {
+            for(int y=0; y<a.n; y++)
+                {
+                    cout<<a.tablica[x][y]<<" ";
+                }
+            cout<<endl;
+        }
+    return str;
+    }
 
     Macierz(int m=1, int n=1)
     {
@@ -25,9 +37,9 @@ public:
             char *x = "dupa" ;
             throw x;
         }
-        tablica = new double *[m];
+        tablica = new T *[m];
         for(int i=0; i<m; i++)
-            tablica[i] = new double [n];
+            tablica[i] = new T [n];
     }
     virtual ~Macierz()
     {
@@ -37,8 +49,8 @@ public:
     }
 protected:
 };
-
-ostream &operator<< (ostream &str, const Macierz &a)
+/*
+ostream &operator<< (ostream &str, const Macierz<T> &a)
 {
     for(int x=0; x<a.m;x++)
         {
@@ -50,7 +62,9 @@ ostream &operator<< (ostream &str, const Macierz &a)
         }
     return str;
 }
-void Macierz::macierz_losowa()
+*/
+template <class T>
+void Macierz<T>::wypelnijLosowo()
 {
     srand(time(NULL));
     for(int x=0; x<this->m; x++)
@@ -58,4 +72,23 @@ void Macierz::macierz_losowa()
             this->tablica[x][y] = rand()%10;
 
 }
+template <class T>
+void Macierz<T>::wypelnijZerami()
+{
+    srand(time(NULL));
+    for(int x=0; x<this->m; x++)
+        for(int y=0; y<this->n; y++)
+            this->tablica[x][y] = 0;
+
+}
+template <class T>
+void Macierz<T>::wypelnijJedynkami()
+{
+    srand(time(NULL));
+    for(int x=0; x<this->m; x++)
+        for(int y=0; y<this->n; y++)
+            this->tablica[x][y] = 1;
+
+}
+
 #endif // MACIERZ_H
