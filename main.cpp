@@ -40,19 +40,19 @@ int main()
         }
         catch(const char * err)
         {
-            cout<<err<<endl;
+            cout<<err<<endl; //to printuje dupa
         }
         i.wypelnijJedynkami();
-        j.wypelnijZerami();
-        k.wypelnijLosowo();
+        j.wypelnijJedynkami();
+        k.wypelnijJedynkami();
         //cout<<i+j<<endl;
         //cout<<i-j+i<<endl;
+        cout<<i<<endl;
         //i=j;
         //j+=i;
-        cout<<i<<endl<<j<<endl<<k;
     }
     catch(const char *err)
     {
-            cout<<err<<endl;
+       cout<<err<<endl;
     }
 }
