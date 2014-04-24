@@ -45,11 +45,12 @@ int main()
         i.wypelnijJedynkami();
         j.wypelnijJedynkami();
         k.wypelnijJedynkami();
-        i-=j;
-        //cout<<i<<endl;
-        //cout<<i-j+i<<endl;
-        //i=j;
-        //j+=i;
+      //  cout<<i+j<<endl;
+       // cout<<i-j+i<<endl;
+        i=j;
+        cout<<i<<endl;
+        j+=i;
+        cout<<j<<endl;
     }
     catch(const char *err)
     {

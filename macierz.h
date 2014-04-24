@@ -1,6 +1,7 @@
 #ifndef MACIERZ_H
 #define MACIERZ_H
 
+#pragma once
 #include <cstdlib>
 #include <ctime>
 #include <string>
@@ -19,44 +20,35 @@ private:
     T **tablica;
     int m, n;
 public:
-    void wypelnijLosowo();
-    void wypelnijZerami();
-    void wypelnijJedynkami();
-    void nowa_tablica(int, int);
-    void usun(int);
 
+    Macierz(int m=1, int n=1):m(m),n(n) {
 
-    Macierz<T> &operator+= (const Macierz &b);
-    Macierz<T> &operator-= (const Macierz &b);
-    //iczbazespolona operator- (const liczbazespolona &b);
-    //liczbazespolona operator* (const liczbazespolona &b);
-    friend ostream &operator<< <>(ostream &str, const Macierz<T> &a);
-
-
-    Macierz(int m=1, int n=1)
-    {
-        this->m = m;
-        this->n = n;
-        if(m<=0 || n<=0)
-        {
-            throw "dupa";
-        }
-        nowa_tablica(m,n);
+        if(m<=0 || n<=0) throw "dupa";
+        nowa_tablica();
     }
-
-    Macierz(const Macierz& macierz)
-    {
-        m = macierz.m;
-        n = macierz.n;
-        nowa_tablica(m,n);
+    Macierz(const Macierz &macierz):m(macierz.m), n(macierz.n) {
+        nowa_tablica();
 
         for(int x=0; x<m; x++)
             for(int y=0; y<n; y++)
                 tablica[x][y] = macierz.tablica[x][y];
     }
+    void wypelnijLosowo();
+    void wypelnijZerami();
+    void wypelnijJedynkami();
+    void nowa_tablica();
+    void usun();
+
+    Macierz<T> &operator+= (const Macierz &b);
+    Macierz<T> &operator-= (const Macierz &b);
+    Macierz<T> operator- (const Macierz &b);
+    Macierz<T> &operator= (const Macierz &b);
+
+    friend ostream &operator<< <>(ostream &str, const Macierz<T> &a);
+
     virtual ~Macierz()
     {
-        usun(n);
+        usun();
     }
 
 protected:
@@ -82,25 +74,51 @@ Macierz<T> &Macierz<T>::operator+= (const Macierz &b)
     int x, y;
     for(x=0; x<m; x++)
         for( y=0; y<n; y++)
-            this->tablica[x][y] += b.tablica[x][y];
-    cout<<*this<<endl;
-
+            tablica[x][y] += b.tablica[x][y];
     return *this;
 }
 
 template <class T>
 Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 {
-    int x, y;
-    for(x=0; x<m; x++)
-        for( y=0; y<n; y++)
-            this->tablica[x][y] -= b.tablica[x][y];
-    cout<<*this<<endl;
-
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            tablica[x][y] -= b.tablica[x][y];
     return *this;
 }
+
 template <class T>
-void Macierz<T>::nowa_tablica(int m, int n)
+Macierz<T> Macierz<T>::operator- (const Macierz &b)
+{
+    Macierz temp(m,n);
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            temp.tablica[x][y] = tablica[x][y];
+    temp.m = m;
+    temp.n = n;
+
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            temp.tablica[x][y] -= b.tablica[x][y];
+    return temp;
+}
+
+template <class T>
+Macierz<T> &Macierz<T>::operator= (const Macierz &b)
+{
+    usun();
+    m = b.m;
+    n = b.n;
+    nowa_tablica();
+
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            this->tablica[x][y] = b.tablica[x][y];
+    return *this;
+}
+
+template <class T>
+void Macierz<T>::nowa_tablica()
 {
     tablica = new T *[m];
     for(int i=0; i<m; i++)
@@ -132,14 +150,13 @@ void Macierz<T>::wypelnijJedynkami()
     for(int x=0; x<this->m; x++)
         for(int y=0; y<this->n; y++)
             this->tablica[x][y] = 1;
-
 }
 
 template <class T>
-void Macierz<T>::usun(int n)
+void Macierz<T>::usun()
 {
     cout<<"destrukcja!!"<<endl;
-    for(int x=0; x<this->n; x++)
+    for(int x=0; x<n; x++)
         delete []tablica[x];
     delete []tablica;
 }
