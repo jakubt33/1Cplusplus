@@ -61,6 +61,7 @@ public:
 
 protected:
 };
+
 template <class T>
 ostream &operator<< (ostream &str, const Macierz<T> &a)
 {
@@ -79,8 +80,8 @@ template <class T>
 Macierz<T> &Macierz<T>::operator+= (const Macierz &b)
 {
     int x, y;
-    for(x=0; x<n; x++)
-        for( y=0; y<m; y++)
+    for(x=0; x<m; x++)
+        for( y=0; y<n; y++)
             this->tablica[x][y] += b.tablica[x][y];
     cout<<*this<<endl;
 
@@ -91,8 +92,8 @@ template <class T>
 Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 {
     int x, y;
-    for(x=0; x<n; x++)
-        for( y=0; y<m; y++)
+    for(x=0; x<m; x++)
+        for( y=0; y<n; y++)
             this->tablica[x][y] -= b.tablica[x][y];
     cout<<*this<<endl;
 
