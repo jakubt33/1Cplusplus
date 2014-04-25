@@ -20,9 +20,7 @@ private:
     T **tablica;
     int m, n;
 public:
-
     Macierz(int m=1, int n=1):m(m),n(n) {
-
         if(m<=0 || n<=0) throw "dupa";
         nowa_tablica();
     }
@@ -90,16 +88,17 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 template <class T>
 Macierz<T> Macierz<T>::operator- (const Macierz &b)
 {
+    cout<<"jm="<<m<<"jn"<<n<<endl<<"im"<<b.m<<"in"<<b.n<<endl;
     Macierz temp(m,n);
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             temp.tablica[x][y] = tablica[x][y];
-    temp.m = m;
-    temp.n = n;
 
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             temp.tablica[x][y] -= b.tablica[x][y];
+
+    cout<<"napisa"<<endl;
     return temp;
 }
 
