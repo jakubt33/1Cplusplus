@@ -8,7 +8,7 @@ int main()
 {
     try
     {
-        /*
+
         LiczbaZespolona a(1,2);
         LiczbaZespolona b(0);
         LiczbaZespolona c(-1,-1);
@@ -18,39 +18,36 @@ int main()
         {
            cout<<err<<endl;
         }
-        cout<<a+b<<endl;
-        cout<<a*b<<endl;
-        cout<<a*c<<endl;
-        //c/=a;
-        //cout<<c<<endl;
-        //c*=a;
-        //cout<<c<<endl;
+        //cout<<a+b<<endl;
+        //cout<<a*b<<endl;
+        //cout<<a*c<<endl;
+        c/=0;
+        cout<<c<<endl;
+        c*=a;
+        cout<<c<<endl;
         c+=a;
         cout<<c<<endl;
         c-=a;
-        cout<<c<<endl;*/
-       // */
-        Macierz<double> i(2,3); //(m,n)
+        cout<<c<<endl;
+       /*
+        Macierz<double> i(2,3);
         Macierz<double> j(2,3);
         Macierz<double> k(3,2);
         try
         {
             Macierz<double> macierz(-1,0);
             cout<<macierz<<endl;
-        }
-        catch(const char * err)
+        }catch(const char * err)
         {
-            cout<<err<<endl; //to printuje dupa
+            cout<<err<<endl;
         }
-        j.wypelnijLosowo();
         i.wypelnijJedynkami();
-        cout<<j<<endl<<i<<endl;
+        j.wypelnijJedynkami();
         k.wypelnijJedynkami();
-        cout<<i-j<<endl;
-      //  cout<<i+j<<endl;
-       // cout<<i-j+i<<endl;
-        //i=j-i;
-        //cout<<i<<endl;
+        cout<<i+j<<endl;
+        cout<<i-j+i<<endl;
+        i=j;
+        j+=i;*/
 
     }
     catch(const char *err)

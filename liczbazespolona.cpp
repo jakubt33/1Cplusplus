@@ -42,10 +42,8 @@ LiczbaZespolona LiczbaZespolona::operator* (const LiczbaZespolona &b)
 }
 LiczbaZespolona LiczbaZespolona::operator/ (const LiczbaZespolona &b)
 {
-    if(b.re == 0 && b.im == 0)
-        throw "nie dziel przez zero";
-
-    return LiczbaZespolona((re*b.re)/(b.re*b.re+b.im*b.im), (im*b.re-re*b.im)/(b.re*b.re+b.im*b.im));
+    if(b.re == 0 && b.im == 0) throw "nie dziel przez zero";
+    else return LiczbaZespolona((re*b.re)/(b.re*b.re+b.im*b.im), (im*b.re-re*b.im)/(b.re*b.re+b.im*b.im));
 }
 void LiczbaZespolona::operator+= (const LiczbaZespolona &b)
 {
@@ -57,12 +55,20 @@ void LiczbaZespolona::operator-= (const LiczbaZespolona &b)
      re-=b.re;
      im-=b.im;
 }
-//void LiczbaZespolona::operator*= (const LiczbaZespolona &b)
-//{
- //   re=re*b.re+im*b.im;
-  //  im=re*b.im+b.re*im;
-//}
-
+void LiczbaZespolona::operator*= (const LiczbaZespolona &b)
+{
+    re=re*b.re+im*b.im;
+    im=re*b.im+b.re*im;
+}
+void LiczbaZespolona::operator/= (const LiczbaZespolona &b)
+{
+    if(b.re == 0 && b.im == 0) throw "nie dziel przez 0";
+    else
+    {
+        re=(re*b.re)/(b.re*b.re+b.im*b.im);
+        im=(im*b.re-re*b.im)/(b.re*b.re+b.im*b.im);
+    }
+}
 
 ostream &operator<< (ostream &str, const LiczbaZespolona &b)
 {

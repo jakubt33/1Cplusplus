@@ -12,6 +12,9 @@ class Macierz;
 template <class T>
 ostream &operator<< (ostream &str, const Macierz<T> &);
 
+  //.....................
+ //dorobic mnożenie!!
+//.....................
 
 template <class T>
 class Macierz
@@ -39,6 +42,8 @@ public:
 
     Macierz<T> &operator+= (const Macierz &b);
     Macierz<T> &operator-= (const Macierz &b);
+    Macierz<T> &operator*= (const Macierz &b);
+    Macierz<T> operator+ (const Macierz &b);
     Macierz<T> operator- (const Macierz &b);
     Macierz<T> &operator= (const Macierz &b);
 
@@ -85,16 +90,32 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
     return *this;
 }
 
+template <class T>//napisac
+Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
+{
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            tablica[x][y] -= b.tablica[x][y];
+    return *this;
+}
+
+template <class T>
+Macierz<T> Macierz<T>::operator+ (const Macierz &b)
+{
+    Macierz temp(m,n);
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            temp.tablica[x][y] = tablica[x][y] + b.tablica[x][y];
+    return temp;
+}
+
 template <class T>
 Macierz<T> Macierz<T>::operator- (const Macierz &b)
 {
     Macierz temp(m,n);
-
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             temp.tablica[x][y] = tablica[x][y] - b.tablica[x][y];
-
-    cout<<"napisa"<<endl;
     return temp;
 }
 

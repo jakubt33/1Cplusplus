@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+//dopisac zabezpieczenie przed dzieleniem przez 0
+
 using namespace std;
 class LiczbaZespolona
 {
@@ -20,8 +22,8 @@ class LiczbaZespolona
         LiczbaZespolona operator/ (const LiczbaZespolona &b);
         void operator+= (const LiczbaZespolona &b);
         void operator-= (const LiczbaZespolona &b);
-        LiczbaZespolona operator*= (const LiczbaZespolona &b);
-       // LiczbaZespolona operator/= (const LiczbaZespolona &b);
+        void operator*= (const LiczbaZespolona &b);
+        void operator/= (const LiczbaZespolona &b);
         friend ostream &operator<< (ostream &str, const LiczbaZespolona &b);
 
         virtual ~LiczbaZespolona();
