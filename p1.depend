@@ -8,12 +8,12 @@
 	<ctime>
 	<string>
 
-1398425684 source:/home/kuba/github/zajecia1c++/main.cpp
+1398462165 source:/home/kuba/github/zajecia1c++/main.cpp
 	<iostream>
 	"macierz.h"
 	"liczbazespolona.h"
 
-1398422560 /home/kuba/github/zajecia1c++/macierz.h
+1398462208 /home/kuba/github/zajecia1c++/macierz.h
 	<cstdlib>
 	<ctime>
 	<string>

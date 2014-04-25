@@ -59,9 +59,9 @@ ostream &operator<< (ostream &str, const Macierz<T> &a)
         {
             for(int y=0; y<a.n; y++)
                 {
-                    cout<<a.tablica[x][y]<<" ";
+                    str<<a.tablica[x][y]<<" ";
                 }
-            cout<<endl;
+            str<<endl;
         }
     return str;
 }
@@ -88,15 +88,11 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 template <class T>
 Macierz<T> Macierz<T>::operator- (const Macierz &b)
 {
-    cout<<"jm="<<m<<"jn"<<n<<endl<<"im"<<b.m<<"in"<<b.n<<endl;
     Macierz temp(m,n);
-    for(int x=0; x<m; x++)
-        for(int y=0; y<n; y++)
-            temp.tablica[x][y] = tablica[x][y];
 
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
-            temp.tablica[x][y] -= b.tablica[x][y];
+            temp.tablica[x][y] = tablica[x][y] - b.tablica[x][y];
 
     cout<<"napisa"<<endl;
     return temp;
@@ -155,7 +151,7 @@ template <class T>
 void Macierz<T>::usun()
 {
     cout<<"destrukcja!!"<<endl;
-    for(int x=0; x<n; x++)
+    for(int x=0; x<m; x++)
         delete []tablica[x];
     delete []tablica;
 }

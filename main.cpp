@@ -8,7 +8,7 @@ int main()
 {
     try
     {
-
+        /*
         LiczbaZespolona a(1,2);
         LiczbaZespolona b(0);
         LiczbaZespolona c(-1,-1);
@@ -28,11 +28,10 @@ int main()
         c+=a;
         cout<<c<<endl;
         c-=a;
-        cout<<c<<endl;
+        cout<<c<<endl;*/
        // */
-        /*
-        Macierz<double> i(3,2); //(m,n)
-        Macierz<double> j(3,2);
+        Macierz<double> i(2,3); //(m,n)
+        Macierz<double> j(2,3);
         Macierz<double> k(3,2);
         try
         {
@@ -47,11 +46,12 @@ int main()
         i.wypelnijJedynkami();
         cout<<j<<endl<<i<<endl;
         k.wypelnijJedynkami();
+        cout<<i-j<<endl;
       //  cout<<i+j<<endl;
        // cout<<i-j+i<<endl;
-        i=j-i;
-        cout<<i<<endl;
-        */
+        //i=j-i;
+        //cout<<i<<endl;
+
     }
     catch(const char *err)
     {

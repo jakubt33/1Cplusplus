@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="liczbazespolona.cpp" />
+		<Unit filename="liczbazespolona.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
