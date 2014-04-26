@@ -17,17 +17,17 @@ int main()
         {
             cout<<err<<endl;
         }
-        //cout<<a+b<<endl;
-        //cout<<a*b<<endl;
-        //cout<<a*c<<endl;
+        cout<<a+b<<endl;
+        cout<<a*b<<endl;
+        cout<<a*c<<endl;
         c/=a;
         cout<<c<<endl;
         c*=a;
         cout<<c<<endl;
-        //c+=a;
-        //cout<<c<<endl;
-        //c-=a;
-        //cout<<c<<endl;
+        c+=a;
+        cout<<c<<endl;
+        c-=a;
+        cout<<c<<endl;
 
 
         Macierz<double> i(2,3);
@@ -48,8 +48,13 @@ int main()
         cout<<i-j+i<<endl;
         i=j;
         j+=i;
-        }
-        catch(const char * err)
+        i*=k;
+        cout<<i<<endl;
+        i.macierz_jednostkowa();
+        cout<<i;
+
+    }
+    catch(const char * err)
         {
             cout<<err<<endl;
         }

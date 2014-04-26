@@ -20,7 +20,7 @@ private:
     int m, n;
 public:
     Macierz(int m=1, int n=1):m(m),n(n) {
-        if(m<=0 || n<=0) throw "dupa";
+        if(m<=0 || n<=0) throw "zły rozmiar macierzy";
         nowa_tablica();
     }
     Macierz(const Macierz &macierz):m(macierz.m), n(macierz.n) {
@@ -33,15 +33,19 @@ public:
     void wypelnijLosowo();
     void wypelnijZerami();
     void wypelnijJedynkami();
+    void macierz_jednostkowa();
     void nowa_tablica();
     void usun();
 
-    Macierz<T> &operator+= (const Macierz &b);
-    Macierz<T> &operator-= (const Macierz &b);
-    Macierz<T> &operator*= (const Macierz &b);
     Macierz<T> operator+ (const Macierz &b);
+    Macierz<T> &operator+= (const Macierz &b);
+
     Macierz<T> operator- (const Macierz &b);
+    Macierz<T> &operator-= (const Macierz &b);
+
     Macierz<T> operator* (const Macierz &b);
+    Macierz<T> &operator*= (const Macierz &b);
+
     Macierz<T> &operator= (const Macierz &b);
 
     friend ostream &operator<< <>(ostream &str, const Macierz<T> &a);
@@ -50,7 +54,6 @@ public:
     {
         usun();
     }
-
 protected:
 };
 
@@ -113,7 +116,6 @@ Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
         cout<<endl;
     }
     return *this;
-
 }
 
 template <class T>
@@ -158,6 +160,7 @@ Macierz<T> Macierz<T>::operator*(const Macierz &b)
     return kopia;
     }
 }
+
 template <class T>
 Macierz<T> &Macierz<T>::operator= (const Macierz &b)
 {
@@ -182,7 +185,6 @@ void Macierz<T>::nowa_tablica()
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             this->tablica[x][y] = 0;
-
 }
 
 template <class T>
@@ -198,20 +200,30 @@ template <class T>
 void Macierz<T>::wypelnijZerami()
 {
     srand(time(NULL));
-    for(int x=0; x<this->m; x++)
-        for(int y=0; y<this->n; y++)
-            this->tablica[x][y] = 0;
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            tablica[x][y] = 0;
 
 }
 template <class T>
 void Macierz<T>::wypelnijJedynkami()
 {
     srand(time(NULL));
-    for(int x=0; x<this->m; x++)
-        for(int y=0; y<this->n; y++)
-            this->tablica[x][y] = 1;
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            tablica[x][y] = 1;
 }
 
+template <class T>
+void Macierz<T>::macierz_jednostkowa()
+{
+    if(m!=n) throw "macierz musi być kwadratowa";
+    wypelnijZerami();
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            if(x==y) tablica[x][y] = 1;
+
+}
 template <class T>
 void Macierz<T>::usun()
 {
