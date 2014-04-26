@@ -45,6 +45,7 @@ LiczbaZespolona LiczbaZespolona::operator/ (const LiczbaZespolona &b)
     if(b.re == 0 && b.im == 0) throw "nie dziel przez zero";
     else return LiczbaZespolona((re*b.re)/(b.re*b.re+b.im*b.im), (im*b.re-re*b.im)/(b.re*b.re+b.im*b.im));
 }
+
 void LiczbaZespolona::operator+= (const LiczbaZespolona &b)
 {
      re+=b.re;

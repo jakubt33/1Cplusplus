@@ -8,20 +8,20 @@
 	<ctime>
 	<string>
 
-1398466654 source:/home/kuba/github/zajecia1c++/main.cpp
+1398522406 source:/home/kuba/github/zajecia1c++/main.cpp
 	<iostream>
 	"macierz.h"
 	"liczbazespolona.h"
 
-1398465415 /home/kuba/github/zajecia1c++/macierz.h
+1398522938 /home/kuba/github/zajecia1c++/macierz.h
 	<cstdlib>
 	<ctime>
 	<string>
 
-1398466710 source:/home/kuba/github/zajecia1c++/liczbazespolona.cpp
+1398518904 source:/home/kuba/github/zajecia1c++/liczbazespolona.cpp
 	"liczbazespolona.h"
 
-1398466914 /home/kuba/github/zajecia1c++/liczbazespolona.h
+1398518898 /home/kuba/github/zajecia1c++/liczbazespolona.h
 	<iostream>
 	<cmath>
 

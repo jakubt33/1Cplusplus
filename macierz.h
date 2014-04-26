@@ -93,10 +93,30 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 template <class T>//napisac
 Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
 {
-    for(int x=0; x<m; x++)
-        for(int y=0; y<n; y++)
-            tablica[x][y] -= b.tablica[x][y];
+    if(n != b.m) throw "złe wynmiary macierzy";
+    else
+    {
+        Macierz kopia = *this;
+        usun();
+        int temp_n = n;
+        n=b.n;
+        nowa_tablica();
+        for(int x=0; x<m; x++)
+        {
+            for(int y=0; y<n; y++)
+            {
+                T temp = 0;
+                for(int k=0;k<temp_n;k++)
+                {
+                    temp += kopia.tablica[x][k] * b.tablica[k][y];
+                }
+                tablica[x][y] = temp;
+             }
+        }
+        cout<<endl;
+    }
     return *this;
+
 }
 
 template <class T>
@@ -139,6 +159,11 @@ void Macierz<T>::nowa_tablica()
     tablica = new T *[m];
     for(int i=0; i<m; i++)
         tablica[i] = new T [n];
+
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
+            this->tablica[x][y] = 0;
+
 }
 
 template <class T>

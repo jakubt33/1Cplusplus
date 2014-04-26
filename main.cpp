@@ -21,7 +21,7 @@ int main()
         //cout<<a+b<<endl;
         //cout<<a*b<<endl;
         //cout<<a*c<<endl;
-        c/=0;
+
         cout<<c<<endl;
         c*=a;
         cout<<c<<endl;
@@ -29,10 +29,11 @@ int main()
         cout<<c<<endl;
         c-=a;
         cout<<c<<endl;
-       /*
+
         Macierz<double> i(2,3);
         Macierz<double> j(2,3);
         Macierz<double> k(3,2);
+
         try
         {
             Macierz<double> macierz(-1,0);
@@ -44,10 +45,12 @@ int main()
         i.wypelnijJedynkami();
         j.wypelnijJedynkami();
         k.wypelnijJedynkami();
-        cout<<i+j<<endl;
-        cout<<i-j+i<<endl;
+        cout<<i<<endl<<k<<endl;
+        i*=k;
+        cout<<i<<endl;
+        //cout<<i-j+i<<endl;
         i=j;
-        j+=i;*/
+        j+=i;
 
     }
     catch(const char *err)
