@@ -38,7 +38,7 @@ LiczbaZespolona LiczbaZespolona::operator- (const LiczbaZespolona &b)
 }
 LiczbaZespolona LiczbaZespolona::operator* (const LiczbaZespolona &b)
 {
-    return LiczbaZespolona(re*b.re+im*b.im, re*b.im+b.re*im);
+    return LiczbaZespolona(re*b.re-im*b.im, re*b.im+b.re*im);
 }
 LiczbaZespolona LiczbaZespolona::operator/ (const LiczbaZespolona &b)
 {
@@ -58,8 +58,9 @@ void LiczbaZespolona::operator-= (const LiczbaZespolona &b)
 }
 void LiczbaZespolona::operator*= (const LiczbaZespolona &b)
 {
-    re=re*b.re+im*b.im;
-    im=re*b.im+b.re*im;
+    double re_kopia = (re*b.re-im*b.im);
+    im = re*b.im+b.re*im;
+    re = re_kopia;
 }
 void LiczbaZespolona::operator/= (const LiczbaZespolona &b)
 {
