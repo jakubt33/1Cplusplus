@@ -74,9 +74,9 @@ ostream &operator<< (ostream &str, const Macierz<T> &a)
 template <class T>
 Macierz<T> &Macierz<T>::operator+= (const Macierz &b)
 {
-    int x, y;
-    for(x=0; x<m; x++)
-        for( y=0; y<n; y++)
+    if(m != b.m || n != b.n) throw "nie poprawne wymiary macierzy";
+    for(int x=0; x<m; x++)
+        for(int y=0; y<n; y++)
             tablica[x][y] += b.tablica[x][y];
     return *this;
 }
@@ -84,6 +84,7 @@ Macierz<T> &Macierz<T>::operator+= (const Macierz &b)
 template <class T>
 Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 {
+    if(m != b.m || n != b.n) throw "nie poprawne wymiary macierzy";
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             tablica[x][y] -= b.tablica[x][y];
@@ -93,7 +94,7 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
 template <class T>
 Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
 {
-    if(n != b.m) throw "złe wynmiary macierzy";
+    if(n != b.m) throw "nie poprawne wymiary macierzy";
     else
     {
         Macierz kopia = *this;
@@ -121,6 +122,7 @@ Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
 template <class T>
 Macierz<T> Macierz<T>::operator+ (const Macierz &b)
 {
+    if(m != b.m || n != b.n) throw "nie poprawne wymiary macierzy";
     Macierz temp(m,n);
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
@@ -131,6 +133,7 @@ Macierz<T> Macierz<T>::operator+ (const Macierz &b)
 template <class T>
 Macierz<T> Macierz<T>::operator- (const Macierz &b)
 {
+    if(m != b.m || n != b.n) throw "nie poprawne wymiary macierzy";
     Macierz temp(m,n);
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
@@ -141,7 +144,7 @@ Macierz<T> Macierz<T>::operator- (const Macierz &b)
 template <class T>
 Macierz<T> Macierz<T>::operator*(const Macierz &b)
 {
-    if(n != b.m) throw "złe wynmiary macierzy";
+    if(n != b.m) throw "nie poprawne wymiary macierzy";
     else
     {
         Macierz kopia (m,b.n);
@@ -199,16 +202,14 @@ void Macierz<T>::wypelnijLosowo()
 template <class T>
 void Macierz<T>::wypelnijZerami()
 {
-    srand(time(NULL));
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             tablica[x][y] = 0;
-
 }
+
 template <class T>
 void Macierz<T>::wypelnijJedynkami()
 {
-    srand(time(NULL));
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             tablica[x][y] = 1;
@@ -222,8 +223,8 @@ void Macierz<T>::macierz_jednostkowa()
     for(int x=0; x<m; x++)
         for(int y=0; y<n; y++)
             if(x==y) tablica[x][y] = 1;
-
 }
+
 template <class T>
 void Macierz<T>::usun()
 {
@@ -231,6 +232,5 @@ void Macierz<T>::usun()
         delete []tablica[x];
     delete []tablica;
 }
-
 
 #endif // MACIERZ_H

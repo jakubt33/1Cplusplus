@@ -48,11 +48,6 @@ int main()
         cout<<i-j+i<<endl;
         i=j;
         j+=i;
-        i*=k;
-        cout<<i<<endl;
-        i.macierz_jednostkowa();
-        cout<<i;
-
     }
     catch(const char * err)
         {
