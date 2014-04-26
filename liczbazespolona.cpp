@@ -66,8 +66,9 @@ void LiczbaZespolona::operator/= (const LiczbaZespolona &b)
     if(b.re == 0 && b.im == 0) throw "nie dziel przez 0";
     else
     {
-        re=(re*b.re)/(b.re*b.re+b.im*b.im);
+        double re_kopia = (re*b.re+im*b.im)/(b.re*b.re+b.im*b.im);
         im=(im*b.re-re*b.im)/(b.re*b.re+b.im*b.im);
+        re = re_kopia;
     }
 }
 
