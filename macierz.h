@@ -12,10 +12,6 @@ class Macierz;
 template <class T>
 ostream &operator<< (ostream &str, const Macierz<T> &);
 
-  //.....................
- //dorobic mnożenie!!
-//.....................
-
 template <class T>
 class Macierz
 {
@@ -45,6 +41,7 @@ public:
     Macierz<T> &operator*= (const Macierz &b);
     Macierz<T> operator+ (const Macierz &b);
     Macierz<T> operator- (const Macierz &b);
+    Macierz<T> operator* (const Macierz &b);
     Macierz<T> &operator= (const Macierz &b);
 
     friend ostream &operator<< <>(ostream &str, const Macierz<T> &a);
@@ -90,7 +87,7 @@ Macierz<T> &Macierz<T>::operator-= (const Macierz &b)
     return *this;
 }
 
-template <class T>//napisac
+template <class T>
 Macierz<T> &Macierz<T>::operator*= (const Macierz &b)
 {
     if(n != b.m) throw "złe wynmiary macierzy";
@@ -139,6 +136,28 @@ Macierz<T> Macierz<T>::operator- (const Macierz &b)
     return temp;
 }
 
+template <class T>
+Macierz<T> Macierz<T>::operator*(const Macierz &b)
+{
+    if(n != b.m) throw "złe wynmiary macierzy";
+    else
+    {
+        Macierz kopia (m,b.n);
+        for(int x=0; x<m; x++)
+        {
+            for(int y=0; y<b.n; y++)
+            {
+                T temp = 0;
+                for(int k=0;k<n;k++)
+                {
+                    temp += tablica[x][k] * b.tablica[k][y];
+                }
+                kopia.tablica[x][y] = temp;
+             }
+        }
+    return kopia;
+    }
+}
 template <class T>
 Macierz<T> &Macierz<T>::operator= (const Macierz &b)
 {
@@ -196,7 +215,6 @@ void Macierz<T>::wypelnijJedynkami()
 template <class T>
 void Macierz<T>::usun()
 {
-    cout<<"destrukcja!!"<<endl;
     for(int x=0; x<m; x++)
         delete []tablica[x];
     delete []tablica;

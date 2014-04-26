@@ -46,7 +46,7 @@ int main()
         j.wypelnijJedynkami();
         k.wypelnijJedynkami();
         cout<<i<<endl<<k<<endl;
-        i*=k;
+        i =i*k;
         cout<<i<<endl;
         //cout<<i-j+i<<endl;
         i=j;
