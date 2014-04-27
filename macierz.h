@@ -31,7 +31,7 @@ public:
                 tablica[x][y] = macierz.tablica[x][y];
     }
 
-    void macierz_jednostkowa();
+    void macierzJednostkowa();
     void nowa_tablica();
     void usun();
     void wypelnijJedynkami();
@@ -57,7 +57,7 @@ protected:
 };
 
 template <class T>
-void Macierz<T>::macierz_jednostkowa()
+void Macierz<T>::macierzJednostkowa()
 {
     if(m!=n) throw "macierz musi być kwadratowa";
     wypelnijZerami();
@@ -217,6 +217,7 @@ void Macierz<T>::operator= (const Macierz &b)
 template <class T>
 ostream &operator<< (ostream &str, const Macierz<T> &a)
 {
+    str<<endl;
     for(int x=0; x<a.m;x++)
         {
             for(int y=0; y<a.n; y++)

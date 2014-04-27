@@ -88,6 +88,6 @@ ostream &operator<< (ostream &str, const LiczbaZespolona &b)
 {
     str<<b.re;
     if(b.im>=0) str<<"+";
-    str<<b.im<<"i"<<endl;
+    str<<b.im<<"i";
     return str;
 }

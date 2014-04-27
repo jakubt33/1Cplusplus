@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="liczbazespolona.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="1553" topLine="45" />
+	<File name="liczbazespolona.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1810" topLine="18" />
 	</File>
-	<File name="liczbazespolona.h" open="1" top="0" tabpos="4">
-		<Cursor position="678" topLine="3" />
+	<File name="liczbazespolona.h" open="1" top="0" tabpos="2">
+		<Cursor position="102" topLine="5" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="425" topLine="0" />
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="325" topLine="26" />
 	</File>
 </CodeBlocks_layout_file>
