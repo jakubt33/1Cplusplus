@@ -11,19 +11,21 @@ class LiczbaZespolona
 {
     public:
         LiczbaZespolona(double re = 0, double im = 0);
-        void wyswietl();
         void modul();
         void setIm(double);
         void setRe(double);
+        void wyswietl();
 
         LiczbaZespolona operator+ (const LiczbaZespolona &b);
         LiczbaZespolona operator- (const LiczbaZespolona &b);
         LiczbaZespolona operator* (const LiczbaZespolona &b);
         LiczbaZespolona operator/ (const LiczbaZespolona &b);
+
         void operator+= (const LiczbaZespolona &b);
         void operator-= (const LiczbaZespolona &b);
         void operator*= (const LiczbaZespolona &b);
         void operator/= (const LiczbaZespolona &b);
+
         friend ostream &operator<< (ostream &str, const LiczbaZespolona &b);
 
         virtual ~LiczbaZespolona();

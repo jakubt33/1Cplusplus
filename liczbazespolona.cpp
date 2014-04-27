@@ -9,14 +9,22 @@ LiczbaZespolona::LiczbaZespolona(double re, double im): re(re), im(im)
 LiczbaZespolona::~LiczbaZespolona()
 {
 }
-void LiczbaZespolona::setRe(double re)
+
+void LiczbaZespolona::modul()
 {
-    this->re = re;
+    this->mod = sqrt( pow(this->re, 2) + pow( this->im, 2 ) );
 }
+
 void LiczbaZespolona::setIm(double im)
 {
     this->im = im;
 }
+
+void LiczbaZespolona::setRe(double re)
+{
+    this->re = re;
+}
+
 void LiczbaZespolona::wyswietl()
 {
     LiczbaZespolona::modul();
@@ -24,22 +32,22 @@ void LiczbaZespolona::wyswietl()
     if(this->im>=0) cout<<"+";
     cout<<this->im<<"i ("<<this->mod<<")"<<endl;
 }
-void LiczbaZespolona::modul()
-{
-    this->mod = sqrt( pow(this->re, 2) + pow( this->im, 2 ) );
-}
+
 LiczbaZespolona LiczbaZespolona::operator+ (const LiczbaZespolona &b)
 {
     return LiczbaZespolona(re+b.re, im+b.im);
 }
+
 LiczbaZespolona LiczbaZespolona::operator- (const LiczbaZespolona &b)
 {
     return LiczbaZespolona(re-b.re, im-b.im);
 }
+
 LiczbaZespolona LiczbaZespolona::operator* (const LiczbaZespolona &b)
 {
     return LiczbaZespolona(re*b.re-im*b.im, re*b.im+b.re*im);
 }
+
 LiczbaZespolona LiczbaZespolona::operator/ (const LiczbaZespolona &b)
 {
     if(b.re == 0 && b.im == 0) throw "nie dziel przez zero";
@@ -51,17 +59,20 @@ void LiczbaZespolona::operator+= (const LiczbaZespolona &b)
      re+=b.re;
      im+=b.im;
 }
+
 void LiczbaZespolona::operator-= (const LiczbaZespolona &b)
 {
      re-=b.re;
      im-=b.im;
 }
+
 void LiczbaZespolona::operator*= (const LiczbaZespolona &b)
 {
     double re_kopia = (re*b.re-im*b.im);
     im = re*b.im+b.re*im;
     re = re_kopia;
 }
+
 void LiczbaZespolona::operator/= (const LiczbaZespolona &b)
 {
     if(b.re == 0 && b.im == 0) throw "nie dziel przez 0";
