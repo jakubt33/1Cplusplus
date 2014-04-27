@@ -4,8 +4,6 @@
 #include <iostream>
 #include <cmath>
 
-//dopisac zabezpieczenie przed dzieleniem przez 0
-
 using namespace std;
 class LiczbaZespolona
 {
